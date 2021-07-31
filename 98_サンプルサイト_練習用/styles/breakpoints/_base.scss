@@ -1,0 +1,374 @@
+/******************************************************************
+
+Stylesheet: ベーススタイル
+
+******************************************************************/
+//baseは適用されるとしたらスマホの縦向き
+
+body {
+  font-family: 'Kameron', 'Noto Sans JP', sans-serif; 
+}//英語、日本語の順に
+
+
+#container {
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.font-sm {
+  font-size: 14px;
+}
+
+.font-md {
+  font-size: 17px;
+}
+
+.font-lr {
+  font-size: 17px;
+}
+
+.font-lg {
+  font-size: 25px;
+}
+
+.mb-sm {
+  margin-bottom: 16px !important;
+}
+
+.mb-lg {
+  margin-bottom: 80px !important;
+}
+
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+
+.pb-lg {
+  margin-bottom: 80px !important;
+}
+
+.content-width {
+  width: 90%;
+  margin: 0 auto;
+  max-width: $contentMaxWidth;
+}
+
+.main-title {
+  @extend .font-lg;
+   font-weight: 600;
+   margin-bottom: 0;
+}
+
+.sub-title {
+  @extend .font-sm;
+  color: $cSubTitle;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column; //子が縦並び
+}
+
+.purple {
+  color: $cWineRed;
+}
+
+
+.header {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navHeight;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+
+  &.triggered {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 10px 0 25px -10px rgba(0,0,0, 0.5);
+  }
+  
+  &__nav {
+    display: none;
+  }
+
+  &__ul {
+    @extend .flex;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+  }
+  
+  &__li {
+    margin-left: 20px;
+    & > a {
+      color: $cBlack;
+      text-decoration: none !important;
+      text-transform: uppercase;
+    }
+  }
+
+  & .logo {
+    justify-content: center;
+    font-size: 38px;
+  }
+
+  &__inner {
+    @extend .content-width;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }  
+}
+
+.travel {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+  }
+  
+  &__title {
+    position: relative;
+    &::before {
+      top: 50%;
+      left: -120px;
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 1px;
+      display: none;
+      background-color: $cBlack;
+      transform: translateY(-50%) scaleX(0);
+      transition: transform 0.3s ease 1.6s;
+      transform-origin: right;
+    }
+    &.inview {
+      &::before {
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__sub {
+    @extend .mb-sm;
+  }
+
+  &__img {
+    height: 300px;
+    @extend .mb-sm;
+    transition: box-shadow 0.01s linear 0.8s;
+    &  >  img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: -1;
+      
+    }
+    &.inview {
+      box-shadow: inset 0 0 30px $cBlack;
+    }
+  }
+
+  &__texts {
+    @extend .pb-sm;
+  }
+}
+
+.houses{
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%; //ボタンが横幅の100％分を保有する。　
+  }
+
+  &__inner {
+    @extend .flex;
+  }
+
+}
+
+.popular {
+
+  &__inner {
+    position: relative;
+    &::before {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90%;
+      background-color: $cBgGray;
+    }
+  }
+
+  &__header {
+    @extend .content-width;
+  }
+
+  &__container {
+    @extend .flex;
+    @extend .content-width;
+  }
+
+  &__title {
+    @extend .font-md;
+    @extend .mb-sm;
+    
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%; //ボタンが横幅の100％分を保有する
+    @extend .mb-lg;
+  }
+
+  &__img {
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 8px;
+
+    & > img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.logo {
+  font-size: 42px;
+  display: flex;
+  &__img {
+    width: 0.7em;
+  }
+  &__world {
+    color: $cWineRed;
+  }
+}
+
+.footer {
+  padding: 60px 0;
+  @extend .content-width;
+
+  &__nav {
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__ul {
+    @extend .flex;
+    padding: 0;
+    list-style: none;
+  }
+  
+  &__li {
+    padding: 15px;
+    margin-left: 10px;
+    & > a {
+      color: $cSubTitle;
+      text-decoration: none !important;
+    }
+  }
+
+  & .logo {
+    justify-content: center;
+    font-size: 38px;
+  }
+}
+
+.side {
+  display: none;
+  position: fixed;
+  top: 70%;
+  transform: translateY(-50%);
+  color: $cBlack;
+  transition: all 0.7s ease-in;
+
+
+  & .tween-animate-title{
+    color: $cBlack;
+    text-decoration: none;
+    margin: 0 30px;
+    vertical-align: middle;
+    letter-spacing: 3px;
+  }
+
+  &.left {
+    left: -50px;
+    &.inview {
+      left: 50px;
+    }
+
+    & .side__inner {
+      transform-origin: top left;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &.right {
+    right: -50px;
+
+    &.inview {
+      right: 50px;
+    }
+
+    & .side__inner {
+      transform-origin: top right;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.icon {
+  position: relative;
+
+  &::before {
+    top: 50%;
+    transform: translateY(-50%);
+    left: -20px;
+    content: "";
+    width: 1em;
+    height: 1em;
+    display: block;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.twitter {
+    &::before {
+      background-image: url(../images/twitter.svg);
+    }
+  }
+
+  &.fb {
+    &::before {
+      background-image: url(../images/facebook.svg);
+    }
+  }
+}

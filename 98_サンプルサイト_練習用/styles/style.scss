@@ -1,0 +1,38 @@
+@import 'modules/variables';
+@import 'modules/mixin';
+@import 'modules/appear';
+@import 'modules/botton';
+@import 'modules/hero-slider';
+@import 'modules/text-animation';
+@import 'modules/image-slide';
+@import 'modules/mobile-menu';
+
+
+//デフォルトでmobileを適用しウィンドウサイズが大きくなったらdesktopで上書きする。
+@import 'breakpoints/base';
+//スマホ横向き
+@media (min-width: 480px) { 
+  @import 'breakpoints/480up';
+}
+//ダブレット
+@media (min-width: 600px) { 
+  @import 'breakpoints/600up';
+}
+//タブレット横向きor小さいデスクトップ
+@media (min-width: 960px) { 
+  @import 'breakpoints/960up';
+}
+//通常のディスプレイ
+@media (min-width: 1280px) { 
+  @import 'breakpoints/1280up';
+}
+//最低解像度が192（Retina-displayの最低)
+@media (min-resolution: 192dpi), //または
+      (-webkit-min-device-pixel-ratio: 2) { //通常の2倍以上の解像度
+  @import "breakpoints/2x";
+}
+//印刷時
+@media print {
+  @import "breakpoints/print";
+}
+
